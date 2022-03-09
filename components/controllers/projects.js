@@ -1,11 +1,12 @@
 const { request } = require('express');
+const { stringify } = require('nodemon/lib/utils');
 const Project = require('../models/Project')
 
 const ERR_CONTEXT  = {"data": "some error occured"};
 //get user projects
 exports.getUserProjects = async (req, res) => {
     try {
-        const projects = await Admin.findAll({ email: req.params.id });
+        const projects = await Project.find({ email: process.env.owner_id });
         res.json(projects)
     } catch (err) {
         console.log(err)
@@ -17,9 +18,11 @@ exports.getUserProjects = async (req, res) => {
 exports.createProject = async (req, res) => {
     try {
         const project = {
-            projectname:req.body.projectname,
-            projectdesc:req.body.projectdesc,
-            ownerid:req.body.ownerid,
+            projectname: req.body.projectname,
+            projectdesc: req.body.projectdesc,
+            projecturl: req.body.projecturl,
+            ownerid: process.env.owner_id,
+            ownername: process.env.owner_name,
             domains: {
                 cpp: req.body.cpp,
                 java: req.body.java,
@@ -30,7 +33,7 @@ exports.createProject = async (req, res) => {
         }
         const newProject = new Project(project)
         await newProject.save()
-        res.json(newSwag)
+        res.json(newProject)
     } catch (err) {
         console.error(err)
         res.json(ERR_CONTEXT)
@@ -78,15 +81,19 @@ exports.deleteProject = async (req, res) => {
 exports.getCategoryProjects = async (req, res) => {
     try {
         // console.log(req.params.id);
-        category = request.params.category
-        paramater = "domain."+category;
-        
-        const projects = await Project.find({ paramater: "1" })
-        if(projects){
-            res.json(projects);
-        }
-        const NO_PROJECT = {"data": "No Projects Found"};
-        res.json(NO_PROJECT)
+        category = req.params.category
+        let projects = "";
+        if(category == "cpp")
+            projects = await Project.find({ "domains.cpp" : "1"})
+        if(category == "java")
+            projects = await Project.find({ "domains.java" : "1"})
+        if(category == "javascript")
+            projects = await Project.find({ "domains.javascript" : "1"})
+        if(category == "flutter")
+            projects = await Project.find({ "domains.flutter" : "1"})
+        if(category == "python")
+            projects = await Project.find({ "domains.python" : "1"})
+        res.json(projects)
     } catch (err) {
         console.error(err)
         res.json(ERR_CONTEXT)

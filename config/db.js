@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const connect = async () => {
-    console.log("Trying to conncect");
+    console.log("Trying to connect");
     await mongoose.connect(process.env.ATLAS_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true

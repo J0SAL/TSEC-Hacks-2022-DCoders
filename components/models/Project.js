@@ -9,9 +9,17 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    projecturl: {
+        type: String,
+        required: true,
+    },
     ownerid : {
         type: String,
         required: true,
+    },
+    ownername : {
+        type: String,
+        default: "Demo User",
     },
     project_status: {
         type: String,

@@ -1,10 +1,11 @@
 const User = require('../models/User')
+const ERR_CONTEXT  = {"data": "some error occured"};
 
 
 exports.registerUser = async (req, res) => {
     try {
         const user = {
-            name:req.body.name,
+            username:req.body.name,
             email:req.body.email,
             password:req.body.password,
             skills: {
@@ -33,6 +34,8 @@ exports.loginUser = async (req, res) => {
         if (data) {
             if (data.password === req.body.password) {
                 // context = {"message": "Login Success"};
+                process.env["owner_id"] = data._id;
+                process.env["owner_name"] = data.username;
                 res.json(data);
             } else {
                 context = {"message": "Incorrect Password"};
@@ -49,29 +52,25 @@ exports.loginUser = async (req, res) => {
     }
 }
 
+
 exports.updateUser = async (req, res) => {
-    try{
-        const modifiedUser = await User.updateOne(
-            { _id: req.params.id },
-              { 
-                  $set: {
-                    name:req.body.name,
-                    email:req.body.email,
-                    password:req.body.password,
-                    skills: {
-                        cpp: req.body.cpp,
-                        java: req.body.java,
-                        python: req.body.python,
-                        javascript: req.body.javascript,
-                        flutter: req.body.flutter
-                    }   
-                }
-            });
-            res.json(modifiedUser);
-    }
-    catch(err){
-        console.log(err);
-        context = {"message": "something went wrong"};
-        res.json(context);
+    try {
+        const update = {
+            username:req.body.name,
+            email:req.body.email,
+            password:req.body.password,
+            skills: {
+                cpp: req.body.cpp,
+                java: req.body.java,
+                python: req.body.python,
+                javascript: req.body.javascript,
+                flutter: req.body.flutter
+            }
+        }
+        const updateUser = await User.findByIdAndUpdate(req.params.id, update, {new: true})
+        res.json(updateUser)
+    } catch (err) {
+        console.error(err)
+        res.json(ERR_CONTEXT)
     }
 }

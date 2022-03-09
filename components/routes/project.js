@@ -3,10 +3,10 @@ const { getUserProjects, createProject, getProject,getCategoryProjects, updatePr
 const router = express.Router();
 
 
-router.get('/:id', getUserProjects);
+router.get('/user/', getUserProjects);
 router.post('/', createProject);
-router.get('/:id', getProject);
-router.get('/:category', getCategoryProjects);
+router.get('/:id', getProject); //not needed
+router.get('/category/:category', getCategoryProjects);
 router.put('/:id', updateProject);
 router.delete('/:id', deleteProject);
 router.get('/', getAllProjects);
