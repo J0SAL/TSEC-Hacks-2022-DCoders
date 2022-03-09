@@ -12,10 +12,10 @@ const ListProjects = () => {
         <h2>Your Projects</h2>
       </div>
 
-      <div class="container">
-        <div class="row">
+      <div class="container ">
+        <div class="row mycontainer">
           <div class="col-lg-9">
-            <div class="card card-margin">
+            <div class="card3 card-margin">
               <div class="card-header no-border">
                 <h3 class="card-title">Waste Management System</h3>
                 
@@ -55,7 +55,7 @@ const ListProjects = () => {
             </div>
           </div>
           <div class="col-lg-9">
-            <div class="card card-margin">
+            <div class="card3 card-margin">
               <div class="card-header no-border">
                 <h3 class="card-title">ASL to English</h3>
                 
@@ -96,7 +96,7 @@ The dataset is made manually by running the Image collection python file that co
             </div>
           </div>
           <div class="col-lg-9">
-            <div class="card card-margin">
+            <div class="card3 card-margin">
               <div class="card-header no-border">
                 <h3 class="card-title">Cropy</h3>
                 
@@ -137,7 +137,7 @@ The dataset is made manually by running the Image collection python file that co
             </div>
           </div>
           <div class="col-lg-9">
-            <div class="card card-margin">
+            <div class="card3 card-margin">
               <div class="card-header no-border">
                 <h3 class="card-title">ML-Heart-disease-detection
 </h3>

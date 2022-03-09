@@ -2,7 +2,7 @@ import React from "react";
 import Uheader from "../Components/Uheader";
 import "./Contribute.css";
 
-const Contribute = () => {
+const MyContribution = () => {
   //request for being added to the contributor
   const submitRequest = async(data)=>{
     console.log("Inside Submit req")
@@ -212,4 +212,4 @@ const Contribute = () => {
   );
 };
 
-export default Contribute;
+export default MyContribution;

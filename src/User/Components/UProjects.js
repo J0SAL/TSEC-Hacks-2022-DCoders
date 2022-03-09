@@ -39,17 +39,21 @@ const UProjects = () => {
 
   return (
     <>
-      {/* <Uheader /> */}
+      <Uheader />
       <section className="get-in-touch">
         <div className="container py-5 h-100  justify-content-center align-items-center">
           <div className="row justify-content-center align-items-center h-100">
             <div className="col-12 col-lg-9 col-xl-7">
               <div
-                className="card shadow-2-strong card-registration"
+                className="card4 shadow-2-strong card-registration"
                 style={{ borderRadius: "15px" }}
+               
               >
+                  <br />
                 <div className="card-body p-4 p-md-5 justify-content-center align-items-center">
-                  <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 titles ">
+                
+                  <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 titles " style={{marginBottom:"-3rem"}}>
+                  
                     Add Projects
                   </h3>
                   <br />
@@ -152,13 +156,16 @@ const UProjects = () => {
                     </div>
                     <br />
                     <br />
-                    <div className="mt-4 pt-2">
+                    <div className="mt-4 pt-2" align="center"  >
+  
                       <input
                         className="btn btn-primary btn-lg"
                         type="submit"
                         value="Submit"
                         align="center"
+                        style={{marginBottom:"1rem"}}
                       />
+                    
                     </div>
                   </form>
                 </div>

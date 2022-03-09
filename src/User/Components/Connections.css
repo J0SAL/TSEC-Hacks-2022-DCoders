@@ -1,0 +1,52 @@
+
+
+.stats {
+  background: #f2f5f8 !important;
+  color: #000 !important;
+}
+
+.articles {
+  font-size: 10px;
+  color: #1d1e1e;
+}
+
+.number1 {
+  font-weight: 500;
+}
+.curved{
+    border-radius: 100px;
+}
+
+.followers {
+  font-size: 10px;
+  color: #1d1e1e;
+}
+
+.number2 {
+  font-weight: 500;
+}
+
+.rating {
+  font-size: 10px;
+  color: #1d1e1e;
+}
+
+.number3 {
+  font-weight: 500;
+}
+.connectionsdiv {
+  margin: 2rem 1rem;
+  display: flex !important;
+  width: 450px;
+  justify-content: space-around;
+  border-radius: 20px;
+  box-shadow: 9px 14px 8px -3px rgba(151,144,144,0.78);
+  -webkit-box-shadow: 9px 14px 8px -3px rgba(151,144,144,0.78);
+  -moz-box-shadow: 9px 14px 8px -3px rgba(151,144,144,0.78);
+}
+.makerow {
+  width: 90%;
+  display: flex !important;
+  flex-wrap: wrap;
+  flex-grow: 3;
+}
