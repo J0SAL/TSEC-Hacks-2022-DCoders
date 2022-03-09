@@ -1,6 +1,15 @@
 const { request } = require('express');
 const { stringify } = require('nodemon/lib/utils');
+const nodemailer = require('nodemailer');
 const Project = require('../models/Project')
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: "devmeet2022@gmail.com",
+      pass: "devmeet1234"
+    }
+  });
 
 const ERR_CONTEXT  = {"data": "some error occured"};
 //get user projects
@@ -33,6 +42,8 @@ exports.createProject = async (req, res) => {
         }
         const newProject = new Project(project)
         await newProject.save()
+
+        
         res.json(newProject)
     } catch (err) {
         console.error(err)

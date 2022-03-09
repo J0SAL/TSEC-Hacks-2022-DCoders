@@ -19,7 +19,6 @@ exports.colabRequest = async (req, res) => {
     }
 }
 
-
 //update colaborator status by id
 exports.colabStatus = async (req, res) => {
     try {
