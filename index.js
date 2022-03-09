@@ -13,6 +13,7 @@ app.use(cors())
 
 app.use('/user', require('./components/routes/user'))
 app.use('/project', require('./components/routes/project') )
+app.use('/colab', require('./components/routes/colaborator') )
 
 
 app.listen(port, () => {

@@ -10,6 +10,10 @@ const colabSchema = new mongoose.Schema({
     project_id: {
         type: String,
         required: true,
+    },
+    status: {
+        type: String,
+        default: "pending"
     }
 },  { versionKey: false })
 
