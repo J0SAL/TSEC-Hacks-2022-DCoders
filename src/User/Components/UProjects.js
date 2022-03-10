@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import ListProjects from "./ListProjects";
 import "./UProjects.css";
 // import Header from "../../Components/Header/Header";
 import Uheader from "./Uheader";
+import axios from "axios";
+
+
 
 const UProjects = () => {
+  
   const [pname, setPname] = useState("");
   const [pdesc, setPdesc] = useState("");
+  const [url, setUrl] = useState("");
   const [techStack1, setTechStack1] = useState("");
   const [techStack2, setTechStack2] = useState("");
   const [techStack3, setTechStack3] = useState("");
   const [techStack4, setTechStack4] = useState("");
   const [techStack5, setTechStack5] = useState("");
+  const id = localStorage.getItem("userid");
+  
   var data = {};
   const handlepName = (e) => {
     setPname(e.target.value);
@@ -20,19 +27,24 @@ const UProjects = () => {
   const handlepDesc = (e) => {
     setPdesc(e.target.value);
   };
-  const handleSubmit = (e) => {
+  const API = axios.create({ baseURL: 'https://devmeetserver.herokuapp.com' });
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log("..submitting the file");
-    // window.location.reload();
+    const response = await API.post('/project/', data);
+    console.log(response);
+    alert("Project added Successfully");
+    window.location.reload();
   };
+
   var tempdata = {
-    pname: pname,
-    pdesc: pdesc,
-    techStack1: techStack1.length === 0 ? "0" : "1",
-    techStack2: techStack2.length === 0 ? "0" : "1",
-    techStack3: techStack3.length === 0 ? "0" : "1",
-    techStack4: techStack4.length === 0 ? "0" : "1",
-    techStack5: techStack5.length === 0 ? "0" : "1",
+    "projectname": pname,
+    "projectdesc": pdesc,
+    "projecturl": url,
+    "cpp": techStack1.length === 0 ? "0" : "1",
+    "java": techStack2.length === 0 ? "0" : "1",
+    "python": techStack3.length === 0 ? "0" : "1",
+    "javascript": techStack4.length === 0 ? "0" : "1",
+    "flutter": techStack5.length === 0 ? "0" : "1",
   };
   data = tempdata;
   console.log(data);
@@ -56,10 +68,14 @@ const UProjects = () => {
                   
                     Add Projects
                   </h3>
+                  
                   <br />
                   <br />
                   <form onSubmit={handleSubmit} className="forms">
                     <div className="row form-field">
+                    <label className="form-label" for="projectName">
+                            Project Name
+                          </label>
                       <div className="col-md-12 mb-4">
                         <div className="form-outline ">
                           <input
@@ -68,9 +84,7 @@ const UProjects = () => {
                             className="form-control form-control-lg input-text js-input"
                             onChange={handlepName}
                           />
-                          <label className="form-label" for="projectName">
-                            Project Name
-                          </label>
+                          
                         </div>
                       </div>
                     </div>
@@ -78,6 +92,9 @@ const UProjects = () => {
                     <br />
 
                     <div className="row">
+                    <label for="projectDesc" className="form-label">
+                            Project Description
+                          </label>
                       <div className="col-md-12 mb-4 d-flex align-items-center">
                         <div className="form-outline datepicker w-100">
                           <input
@@ -86,9 +103,23 @@ const UProjects = () => {
                             id="projectDesc"
                             onChange={handlepDesc}
                           />
-                          <label for="projectDesc" className="form-label">
-                            Project Description
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div className="row form-field">
+                    <label for="projectDesc" className="form-label">
+                            Project URL
                           </label>
+                      <div className="col-md-12 mb-4">
+                        <div className="form-outline ">
+                          <input
+                            type="text"
+                            id="projecturl"
+                            className="form-control form-control-lg input-text js-input"
+                            onChange={(e)=>setUrl(e.target.value)}
+                          />
                         </div>
                       </div>
                     </div>
@@ -165,7 +196,6 @@ const UProjects = () => {
                         align="center"
                         style={{marginBottom:"1rem"}}
                       />
-                    
                     </div>
                   </form>
                 </div>
@@ -173,7 +203,7 @@ const UProjects = () => {
             </div>
           </div>
         </div>
-        <ListProjects />
+        <ListProjects  />
       </section>
     </>
   );

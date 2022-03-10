@@ -3,6 +3,7 @@ import "./LogReg.css";
 import "./tagsinput.css";
 import "./bootstrap.css";
 import Header from "../Header/Header";
+import axios from 'axios';
 
 import { useState } from "react";
 const SignUp = () => {
@@ -32,24 +33,35 @@ const SignUp = () => {
   const handleChangeURL = (e) => {
     setUrl(e.target.value);
   };
-  const handleSubmit = (e) => {
+  const API = axios.create({ baseURL: 'https://devmeetserver.herokuapp.com' });
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log("..submitting the file");
+    if (data.password === data.cpassword) {
+      const response = await API.post('/user/register', data);
+      if(response.data.message === "Registration Failed"){
+      }
+      alert(response.data.message);
+      window.location.replace("http://localhost:3000/home");
+  } else {
+      alert("Password Should be Same in Both the Field : Password, Confirm Password")
+  }
+  // console.log("Data Sent Successfully");
+
+  // window.location.reload();
   };
-  var tempdata = {
-    name: name,
-    email: email,
-    password: password,
-    cpassword: cpassword,
-    techStack1: techStack1.length == 0 ? "0" : "1",
-    techStack2: techStack2.length == 0 ? "0" : "1",
-    techStack3: techStack3.length == 0 ? "0" : "1",
-    techStack4: techStack4.length == 0 ? "0" : "1",
-    techStack5: techStack5.length == 0 ? "0" : "1",
-    url: url,
-  };
-  data = tempdata;
-  console.log(data);
+    var tempdata = {
+      "name": name,
+      "email": email,
+      "password": password,
+      "cpassword": cpassword,
+      "cpp": techStack1.length == 0 ? "0" : "1",
+      "java": techStack2.length == 0 ? "0" : "1",
+      "python": techStack3.length == 0 ? "0" : "1",
+      "javascript": techStack4.length == 0 ? "0" : "1",
+      "flutter": techStack5.length == 0 ? "0" : "1"
+    };
+    data = tempdata;
+    console.log(data);
 
  
 
@@ -217,7 +229,7 @@ const SignUp = () => {
                         className="btn btn-primary btn-lg"
                         type="submit"
                         value="Submit"
-                        align="center"
+                        align="center" 
                       />
                     </div>
                   </form>

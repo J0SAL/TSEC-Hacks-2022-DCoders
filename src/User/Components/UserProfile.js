@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./mydes.css"
 const UserProfile = () => {
+  const [data,setData]=useState({});
+  useEffect(()=>{
+    setData(localStorage.getItem('userData'));
+  },[]);
+  const username = localStorage.getItem("username");
+  const email = localStorage.getItem("email");
+  const contributions = Math.floor(Math.random() * 11);
+  const cpp = localStorage.getItem("cpp");
+  const flutter = localStorage.getItem("flutter");
+  const python = localStorage.getItem("python");
+  const java = localStorage.getItem("java");
+  const javascript = localStorage.getItem("javascript");
+  const list = [cpp,java,python,javascript,flutter];
+  const Course = ["C/C++","Java","Python","JavaScript","Flutter"];
+  
   return (
       <>
-      
     <div class="container">
     <div class="main-body">
     <div class="card3" style={{marginTop:"5rem"}}align="center">
@@ -20,9 +34,9 @@ const UserProfile = () => {
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"/>
                     <div class="mt-3">
-                      <h4>Joy Doe</h4>
+                      <h4>{username}</h4>
                       <p class="text-secondary mb-1">Full Stack Developer</p>
-                      <p class="text-muted font-size-sm">Nirmal,Vasai(W)</p>
+                      <p class="text-muted font-size-sm">Contributions: {contributions}</p>
                       <button class="btn btn-primary">Follow</button>
                       <button class="btn btn-outline-primary"style={{marginLeft:"1rem"}}>Contact</button>
                     </div>
@@ -52,7 +66,7 @@ const UserProfile = () => {
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Joy Almeida
+                      {username}
                     </div>
                   </div>
                   <hr/>
@@ -61,17 +75,17 @@ const UserProfile = () => {
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Joy@mail.com
+                      {email}
                     </div>
                   </div>
                   <hr/>
                   
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Address</h6>
+                      <h6 class="mb-0">Contributions</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Nirmal,Vasai(W)
+                     {contributions}
                     </div>
                   </div>
                   <hr/>
@@ -92,28 +106,15 @@ const UserProfile = () => {
 </div>
                                 
                     <div class="card3 h-100" style={{marginLeft:"18rem"}}>
-                      
-                     
-                      <small>C++</small>
-                      <div class="progress mb-3" style={{height:"5px"}}>
-                        <div class="progress-bar bg-primary" role="progressbar" style={{width: "80%"}} aria-valuenow="95" aria-valuemin="0" aria-valuemax="95"></div>
-                      </div>
-                      <small>Python</small>
-                      <div class="progress mb-3" style={{height: "5px"}}>
-                        <div class="progress-bar bg-primary" role="progressbar" style={{width:"80%"}} aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>MERN Stack</small>
-                      <div class="progress mb-3" style={{height: "5px"}}>
-                        <div class="progress-bar bg-primary" role="progressbar" style={{width: "80%"}} aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Flutter</small>
-                      <div class="progress mb-3" style={{height: "5px"}}>
-                        <div class="progress-bar bg-primary" role="progressbar" style={{width: "80%"}} aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Microservices</small>
-                      <div class="progress mb-3" style={{height:"5px"}}>
-                        <div class="progress-bar bg-primary" role="progressbar" style={{width:"80%" }}aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
+                      {
+                        list.map((item,i)=> {if(item=="1"){
+                            return <><small>{Course[i]}</small>
+                            <div class="progress mb-3" style={{height:"5px"}}>
+                              <div class="progress-bar bg-primary" role="progressbar" style={{width: "80%"}} aria-valuenow="95" aria-valuemin="0" aria-valuemax="95"></div>
+                            </div></>;
+                          }}
+                        )
+                      }
                     </div>
                   </div>
                 </div>
