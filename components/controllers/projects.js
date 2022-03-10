@@ -15,7 +15,7 @@ const ERR_CONTEXT  = {"data": "some error occured"};
 //get user projects
 exports.getUserProjects = async (req, res) => {
     try {
-        const projects = await Project.find({ email: process.env.owner_id });
+        const projects = await Project.find({ ownerid: process.env.owner_id });
         res.json(projects)
     } catch (err) {
         console.log(err)
