@@ -12,6 +12,17 @@ const Contribute = () => {
   },[]);
   console.log(data);
   
+  //request for being added to the contributor
+  const submitRequest = async(data)=>{
+    console.log("Inside Submit req")
+    console.log(data);
+    const pid = {
+      "projectid" : data
+    }
+    const response = await API.post('/colab/request',pid);
+    console.log(response.data)
+    alert("Your request is : ",response.data.status)
+  }
   return (
     <>
     <Uheader />
@@ -73,6 +84,10 @@ const Contribute = () => {
                   <div class="widget-49-meeting-action">
                   {project.project_status} :
                       <a href={`${project.projecturl}`} target="_blank" style={{color:"blue"}}>link</a>
+                      <a class="btn btn-sm btn-flash-border-primary" onClick={()=>{
+                      const data = project._id;
+                      submitRequest(data);
+                      }}>Request for Contribution</a>
                   </div>
                 </div>
               </div>
@@ -84,15 +99,7 @@ const Contribute = () => {
         </>
       </div>
 
-      <div class="container">
-        <div class="row makecenter">
-         {
-           data.map((project)=>{
-
-           })
-         }
-        </div>
-        </div>
+      
     </>
   );
 };

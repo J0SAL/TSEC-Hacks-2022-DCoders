@@ -75,11 +75,13 @@ const SignIn = () => {
                             onChange={handleChangeEmail}
                           />
                         </div>
-                        <div className="col-md-12 mb-4 pb-2">
-                          <div className="form-outline">
+                        </div>
                             <label className="form-label" for="password">
                               Password
                             </label>
+                        <div className="row">
+                        <div className="col-md-12 mb-4 pb-2">
+                          <div className="form-outline">
 
                             <input
                               type="password"

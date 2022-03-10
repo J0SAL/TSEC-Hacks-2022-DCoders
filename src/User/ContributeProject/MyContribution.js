@@ -12,7 +12,7 @@ const MyContribution = () => {
     <>
     <Uheader />
       <div className="section-header" align="center">
-        <h2>All Projects</h2>
+        <h2>My Contributions</h2>
       </div>
 
       <div class="container">
@@ -65,7 +65,7 @@ const MyContribution = () => {
                     <a class="btn btn-sm btn-flash-border-primary" onClick={()=>{
                       const data = 2000;
                       submitRequest(data);
-                      }}>Request for Contribution</a>
+                      }}>Remove from Contribution</a>
                     </a>
                   </div>
                 </div>
@@ -109,6 +109,10 @@ const MyContribution = () => {
                   </ul>
                   <div class="widget-49-meeting-action">
                     <a class="btn btn-sm btn-flash-border-primary">ongoing</a>
+                    <a class="btn btn-sm btn-flash-border-primary" onClick={()=>{
+                      const data = 2000;
+                      submitRequest(data);
+                      }}>Remove from Contribution</a>
                   </div>
                 </div>
               </div>
@@ -128,7 +132,7 @@ const MyContribution = () => {
                       <span class="widget-49-date-month">Mar</span>
                     </div>
                     <div class="widget-49-meeting-info">
-                      <span class="widget-49-pro-title">By team JOJEET</span>
+                      <span class="widget-49-pro-title">By team JEET</span>
                       <span class="widget-49-meeting-time">
                         contributors : 5
                       </span>
@@ -153,6 +157,10 @@ const MyContribution = () => {
                   </ul>
                   <div class="widget-49-meeting-action">
                   <a class="btn btn-sm btn-flash-border-primary">ongoing</a>
+                  <a class="btn btn-sm btn-flash-border-primary" onClick={()=>{
+                      const data = 2000;
+                      submitRequest(data);
+                      }}>Remove from Contribution</a>
                   </div>
                 </div>
               </div>
@@ -201,6 +209,10 @@ const MyContribution = () => {
                   </ul>
                   <div class="widget-49-meeting-action">
                     <a class="btn btn-sm btn-flash-border-primary">ongoing <span className="gcircle"></span></a>
+                    <a class="btn btn-sm btn-flash-border-primary" onClick={()=>{
+                      const data = 2000;
+                      submitRequest(data);
+                      }}>Remove from Contribution</a>
                   </div>
                 </div>
               </div>
