@@ -22,7 +22,7 @@ const Uheader = () => {
                     <i className="bi bi-list mobile-nav-toggle d-none"></i>
                 </nav>
 
-                <a className="btn-getstarted scrollto" href="/mycontribution">Get Started</a>
+                <a className="btn-getstarted scrollto" href="/mycontribution">My Contribution</a>
 
             </div>
         </header>
